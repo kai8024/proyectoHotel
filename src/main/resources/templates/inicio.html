@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Habtafinder - Página Principal</title>
+    <style>
+        body {
+            font-family: Arial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .button-container a {
+            text-decoration: none;
+            color: white;
+            padding: 15px 30px;
+            background-color: #64c27b;
+            text-align: center;
+        }
+        .button-container a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
+
+<h1>Habtafinder</h1>
+<p>Seleccione una opción para continuar:</p>
+
+<div class="button-container">
+    <a href="buscar-habitaciones.html">Buscar Habitaciones</a>
+    <a href="reservas.html">Mis Reservas</a>
+    <a href="atracciones.html">Atracciones Cercanas</a>
+</div>
 
 </body>
 </html>
