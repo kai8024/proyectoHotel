@@ -7,7 +7,7 @@ public class Usuario {
     private int numTelUsuario;
 
     // Constructor
-    public Usuario(int idUsuario, String nombreUsuario, String correoUsuario, int numTelUsuario) {
+    public Usuario() {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.correoUsuario = correoUsuario;
@@ -26,5 +26,16 @@ public class Usuario {
 
     public int getNumTelUsuario() { return numTelUsuario; }
     public void setNumTelUsuario(int numTelUsuario) { this.numTelUsuario = numTelUsuario; }
+
+    public Object getPassword() {
+        return null;
+    }
+
+    public Object getContraseña() {
+        return null;
+    }
+
+    public void setContraseña(String contraseña) {
+    }
 }
 

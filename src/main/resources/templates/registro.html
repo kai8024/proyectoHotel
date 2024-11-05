@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Usuario</title>
+  <style>
+    body {
+      font-family: Arial;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 300px;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+      padding: 10px;
+      font-size: 14px;
+    }
+    button {
+      padding: 10px;
+      background-color: #64c27b;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Registro de Usuario</h1>
+<form action="/usuario/registro" method="post">
+  <input type="text" name="nombre" placeholder="Nombre" required>
+  <input type="email" name="correo" placeholder="Correo electrónico" required>
+  <input type="password" name="contraseña" placeholder="Contraseña" required>
+  <input type="text" name="numTel" placeholder="Número de Teléfono" required>
+  <button type="submit">Registrar</button>
+</form>
+
+</body>
+</html>
