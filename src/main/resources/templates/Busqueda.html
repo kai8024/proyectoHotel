@@ -1,10 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Disponibilidad de Habitaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="date"], button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .download-btn {
+            text-align: center;
+        }
+        .download-btn button {
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .no-results {
+            text-align: center;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <div class="header">Buscar Disponibilidad de Habitaciones</div>
+    <form id="search-form">
+        <div class="form-group">
+            <label for="start-date">Fecha de inicio:</label>
+            <input type="date" id="start-date" required>
+        </div>
+        <div class="form-group">
+            <label for="end-date">Fecha de fin:</label>
+            <input type="date" id="end-date" required>
+        </div>
+        <button type="button" onclick="buscarDisponibilidad()">Buscar Disponibilidad</button>
+    </form>
+
+    <div class="results" id="results">
+        <!-- Tabla de resultados generada dinámicamente -->
+    </div>
+
+    <div class="download-btn">
+        <button onclick="descargarXLS()">Descargar en formato XLS</button>
+    </div>
+</div>
+
+<script>
+    function buscarDisponibilidad() {
+        // Limpiar resultados previos
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '';
+
+        // Simular datos de resultados para el ejemplo
+        const disponibilidad = [
+            { campoUno: "Habitación 101", campoDos: "2 camas", campoTres: "Disponible", campoCuatro: "$80" },
+            { campoUno: "Habitación 102", campoDos: "1 cama", campoTres: "Disponible", campoCuatro: "$70" },
+            { campoUno: "Habitación 201", campoDos: "Suite", campoTres: "Disponible", campoCuatro: "$150" }
+        ];
+
+        if (disponibilidad.length > 0) {
+            const table = document.createElement('table');
+            const headerRow = document.createElement('tr');
+
+            // Crear encabezados de tabla
+            ['Campo Uno', 'Campo Dos', 'Campo Tres', 'Campo Cuatro'].forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                headerRow.appendChild(th);
+            });
+
+            table.appendChild(headerRow);
+
+            // Crear filas de resultados
+            disponibilidad.forEach(item => {
+                const row = document.createElement('tr');
+                Object.values(item).forEach(value => {
+                    const td = document.createElement('td');
+                    td.textContent = value;
+                    row.appendChild(td);
+                });
+                table.appendChild(row);
+            });
+
+            resultsDiv.appendChild(table);
+        } else {
+            resultsDiv.innerHTML = '<p class="no-results">No hay disponibilidad en el rango de fechas indicado.</p>';
+        }
+    }
+
+    function descargarXLS() {
+        // Aquí iría la lógica para descargar el archivo XLS
+        alert("Función de descarga en desarrollo.");
+    }
+</script>
 </body>
 </html>
