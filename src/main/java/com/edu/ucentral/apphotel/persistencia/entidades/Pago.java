@@ -1,24 +1,41 @@
 package com.edu.ucentral.apphotel.persistencia.entidades;
 
 public class Pago {
-    private int idPago;
-    private double monto;
+    private Integer idPago;
+    private Reserva reserva;
+    private Double monto;
     private String estadoPago;
 
-    // Constructor
-    public Pago(int idPago, double monto, String estadoPago) {
-        this.idPago = idPago;
-        this.monto = monto;
-        this.estadoPago = estadoPago;
+    // Getters y setters
+    public Integer getIdPago() {
+        return idPago;
     }
 
-    // Getters y Setters
-    public int getIdPago() { return idPago; }
-    public void setIdPago(int idPago) { this.idPago = idPago; }
+    public void setIdPago(Integer idPago) {
+        this.idPago = idPago;
+    }
 
-    public double getMonto() { return monto; }
-    public void setMonto(double monto) { this.monto = monto; }
+    public Reserva getReserva() {
+        return reserva;
+    }
 
-    public String getEstadoPago() { return estadoPago; }
-    public void setEstadoPago(String estadoPago) { this.estadoPago = estadoPago; }
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
+
+    public Double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Double monto) {
+        this.monto = monto;
+    }
+
+    public String getEstadoPago() {
+        return estadoPago;
+    }
+
+    public void setEstadoPago(String estadoPago) {
+        this.estadoPago = estadoPago;
+    }
 }

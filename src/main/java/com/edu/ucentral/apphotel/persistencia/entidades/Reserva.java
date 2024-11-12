@@ -1,39 +1,61 @@
 package com.edu.ucentral.apphotel.persistencia.entidades;
 
+import java.util.Date;
+
 public class Reserva {
-    private int idReserva;
+    private Integer idReserva;
     private Usuario usuario;
     private Habitacion habitacion;
-    private String fechaInicio;
-    private String fechaFin;
-    private String estadoReserva;
+    private Date fechaInicio;
+    private Date fechaFin;
+    private String estado;
 
-    // Constructor
-    public Reserva(int idReserva, Usuario usuario, Habitacion habitacion, String fechaInicio, String fechaFin, String estadoReserva) {
-        this.idReserva = idReserva;
-        this.usuario = usuario;
-        this.habitacion = habitacion;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.estadoReserva = estadoReserva;
+    // Getters y setters
+    public Integer getIdReserva() {
+        return idReserva;
     }
 
-    // Getters y Setters
-    public int getIdReserva() { return idReserva; }
-    public void setIdReserva(int idReserva) { this.idReserva = idReserva; }
+    public void setIdReserva(Integer idReserva) {
+        this.idReserva = idReserva;
+    }
 
-    public Usuario getUsuario() { return usuario; }
-    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-    public Habitacion getHabitacion() { return habitacion; }
-    public void setHabitacion(Habitacion habitacion) { this.habitacion = habitacion; }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
-    public String getFechaInicio() { return fechaInicio; }
-    public void setFechaInicio(String fechaInicio) { this.fechaInicio = fechaInicio; }
+    public Habitacion getHabitacion() {
+        return habitacion;
+    }
 
-    public String getFechaFin() { return fechaFin; }
-    public void setFechaFin(String fechaFin) { this.fechaFin = fechaFin; }
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion;
+    }
 
-    public String getEstadoReserva() { return estadoReserva; }
-    public void setEstadoReserva(String estadoReserva) { this.estadoReserva = estadoReserva; }
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }

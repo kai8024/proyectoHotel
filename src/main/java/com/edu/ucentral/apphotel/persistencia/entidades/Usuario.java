@@ -1,30 +1,41 @@
 package com.edu.ucentral.apphotel.persistencia.entidades;
 
 public class Usuario {
-    private int idUsuario;
-    private String nombreUsuario;
-    private String correoUsuario;
-    private int numTelUsuario;
+    private Integer idUsuario;
+    private String nombre;
+    private String correo;
+    private String numTel;
 
-    // Constructor
-    public Usuario(int idUsuario, String nombreUsuario, String correoUsuario, int numTelUsuario) {
-        this.idUsuario = idUsuario;
-        this.nombreUsuario = nombreUsuario;
-        this.correoUsuario = correoUsuario;
-        this.numTelUsuario = numTelUsuario;
+    // Getters y setters
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    // Getters y Setters
-    public int getIdUsuario() { return idUsuario; }
-    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
-    public String getNombreUsuario() { return nombreUsuario; }
-    public void setNombreUsuario(String nombreUsuario) { this.nombreUsuario = nombreUsuario; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public String getCorreoUsuario() { return correoUsuario; }
-    public void setCorreoUsuario(String correoUsuario) { this.correoUsuario = correoUsuario; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public int getNumTelUsuario() { return numTelUsuario; }
-    public void setNumTelUsuario(int numTelUsuario) { this.numTelUsuario = numTelUsuario; }
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getNumTel() {
+        return numTel;
+    }
+
+    public void setNumTel(String numTel) {
+        this.numTel = numTel;
+    }
 }
-

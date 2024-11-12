@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/habitacion")
-public class HabitacionControlador {
+@RequestMapping("/pago")
+public class PagoControlador {
 
     @GetMapping("/lista")
-    public String listarHabitaciones(Model model) {
-        // Lógica para obtener la lista de habitaciones
-        return "habitacion/lista"; // Ruta de la plantilla para mostrar habitaciones
+    public String listarPagos(Model model) {
+        // Lógica para obtener la lista de pagos
+        return "pago/lista"; // Ruta de la plantilla para mostrar pagos
     }
 }

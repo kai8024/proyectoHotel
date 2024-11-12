@@ -1,29 +1,41 @@
 package com.edu.ucentral.apphotel.persistencia.entidades;
 
 public class Habitacion {
-    private int idHabitacion;
-    private String tipoHabitacion;
-    private double tarifaBase;
-    private String estadoHabitacion;
+    private Integer idHabitacion;
+    private String tipo;
+    private Double tarifaBase;
+    private String estado;
 
-    // Constructor
-    public Habitacion(int idHabitacion, String tipoHabitacion, double tarifaBase, String estadoHabitacion) {
-        this.idHabitacion = idHabitacion;
-        this.tipoHabitacion = tipoHabitacion;
-        this.tarifaBase = tarifaBase;
-        this.estadoHabitacion = estadoHabitacion;
+    // Getters y setters
+    public Integer getIdHabitacion() {
+        return idHabitacion;
     }
 
-    // Getters y Setters
-    public int getIdHabitacion() { return idHabitacion; }
-    public void setIdHabitacion(int idHabitacion) { this.idHabitacion = idHabitacion; }
+    public void setIdHabitacion(Integer idHabitacion) {
+        this.idHabitacion = idHabitacion;
+    }
 
-    public String getTipoHabitacion() { return tipoHabitacion; }
-    public void setTipoHabitacion(String tipoHabitacion) { this.tipoHabitacion = tipoHabitacion; }
+    public String getTipo() {
+        return tipo;
+    }
 
-    public double getTarifaBase() { return tarifaBase; }
-    public void setTarifaBase(double tarifaBase) { this.tarifaBase = tarifaBase; }
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
-    public String getEstadoHabitacion() { return estadoHabitacion; }
-    public void setEstadoHabitacion(String estadoHabitacion) { this.estadoHabitacion = estadoHabitacion; }
+    public Double getTarifaBase() {
+        return tarifaBase;
+    }
+
+    public void setTarifaBase(Double tarifaBase) {
+        this.tarifaBase = tarifaBase;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }

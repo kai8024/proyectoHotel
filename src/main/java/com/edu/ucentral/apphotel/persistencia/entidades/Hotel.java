@@ -1,29 +1,43 @@
 package com.edu.ucentral.apphotel.persistencia.entidades;
 
+import java.util.List;
+
 public class Hotel {
-    private int idHotel;
-    private String direccionHotel;
-    private String sitiosHotel;
+    private Integer idHotel;
+    private String direccion;
+    private String sitiosInteres;
     private List<Habitacion> habitaciones;
 
-    // Constructor
-    public Hotel(int idHotel, String direccionHotel, String sitiosHotel) {
-        this.idHotel = idHotel;
-        this.direccionHotel = direccionHotel;
-        this.sitiosHotel = sitiosHotel;
-        this.habitaciones = new ArrayList<>();
+    // Getters y setters
+    public Integer getIdHotel() {
+        return idHotel;
     }
 
-    // Getters y Setters
-    public int getIdHotel() { return idHotel; }
-    public void setIdHotel(int idHotel) { this.idHotel = idHotel; }
+    public void setIdHotel(Integer idHotel) {
+        this.idHotel = idHotel;
+    }
 
-    public String getDireccionHotel() { return direccionHotel; }
-    public void setDireccionHotel(String direccionHotel) { this.direccionHotel = direccionHotel; }
+    public String getDireccion() {
+        return direccion;
+    }
 
-    public String getSitiosHotel() { return sitiosHotel; }
-    public void setSitiosHotel(String sitiosHotel) { this.sitiosHotel = sitiosHotel; }
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
-    public List<Habitacion> getHabitaciones() { return habitaciones; }
-    public void addHabitacion(Habitacion habitacion) { this.habitaciones.add(habitacion); }
+    public String getSitiosInteres() {
+        return sitiosInteres;
+    }
+
+    public void setSitiosInteres(String sitiosInteres) {
+        this.sitiosInteres = sitiosInteres;
+    }
+
+    public List<Habitacion> getHabitaciones() {
+        return habitaciones;
+    }
+
+    public void setHabitaciones(List<Habitacion> habitaciones) {
+        this.habitaciones = habitaciones;
+    }
 }
