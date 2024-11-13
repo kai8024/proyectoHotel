@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscar Habitaciones - Habtafinder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      width: 300px;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+    }
+    .button {
+      background-color: #64c27b;
+      color: white;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+    .back-button {
+      background-color: #f1f1f1;
+      color: #333;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .back-button:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Buscar Habitaciones</h1>
+<div class="container">
+  <form action="/buscarHabitaciones" method="get">
+    <label>Fecha de Entrada:</label>
+    <input type="date" name="fechaEntrada" required>
+
+    <label>Fecha de Salida:</label>
+    <input type="date" name="fechaSalida" required>
+
+    <label>Personas:</label>
+    <select name="personas" required>
+      <option value="1">1 Persona</option>
+      <option value="2">2 Personas</option>
+      <option value="3">3 Personas</option>
+      <option value="4">4 Personas</option>
+    </select>
+
+    <button type="submit" class="button">Buscar</button>
+  </form>
+
+  <br>
+
+  <!-- Botón para volver a la página inicio -->
+  <button onclick="window.location.href='/inicio.html'" class="back-button">Volver a la Página de Inicio</button>
+</div>
+
+</body>
+</html>
