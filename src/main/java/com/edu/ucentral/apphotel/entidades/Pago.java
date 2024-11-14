@@ -1,4 +1,4 @@
-package com.edu.ucentral.apphotel.persistencia.entidades;
+package com.edu.ucentral.apphotel.entidades;
 
 public class Pago {
     private Integer idPago;

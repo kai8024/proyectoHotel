@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserva de Hotel | Hotel Oasis</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <style>
+        /* Estilos adicionales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        .hero-section {
+            background-image: url("{% static 'images/hotel-banner.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+        .hero-section h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .form-reserva {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        .form-reserva label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-reserva input,
+        .form-reserva select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-reserva button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .form-reserva button:hover {
+            background-color: #0056b3;
+        }
+        .info-hotel {
+            text-align: center;
+            padding: 2rem;
+        }
+        .info-hotel h2 {
+            font-size: 2rem;
+            color: #333;
+        }
+        .info-hotel p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+        .info-hotel ul {
+            list-style: none;
+            padding: 0;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .info-hotel ul li {
+            margin: 0.5rem 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Habitaciones</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="reserva-hotel">
+    <div class="form-reserva">
+        <h2>Reserva en Línea</h2>
+        <form action="/reserva/" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required />
+
+            <label for="identificacion">Identificación:</label>
+            <input type="text" id="identificacion" name="identificacion" required />
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" required />
+
+            <label for="checkin">Fecha de entrada:</label>
+            <input type="date" id="checkin" name="checkin" required />
+
+            <label for="checkout">Fecha de salida:</label>
+            <input type="date" id="checkout" name="checkout" required />
+
+            <label for="habitacion">Tipo de habitación:</label>
+            <select id="habitacion" name="habitacion" required>
+                <option value="individual">Individual</option>
+                <option value="doble">Doble</option>
+                <option value="suite">Suite</option>
+            </select>
+
+            <label for="adultos">Adultos:</label>
+            <select id="adultos" name="adultos" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+
+            <label for="menores">Menores:</label>
+            <select id="menores" name="menores" required>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+
+            <button type="submit">Reservar ahora</button>
+        </form>
+    </div>
+</section>
+
+<section class="info-hotel">
+    <h2>Disfruta de una experiencia inolvidable</h2>
+    <p>Ubicado en el corazón de la ciudad, nuestro hotel ofrece una mezcla perfecta de lujo y comodidad. Relájate en nuestras habitaciones elegantes y disfruta de una estancia inolvidable.</p>
+    <ul>
+        <li>Wi-Fi gratuito en todas las áreas</li>
+        <li>Servicio de habitación 24 horas</li>
+        <li>Desayuno incluido</li>
+        <li>Piscina y gimnasio</li>
+        <li>Spa y centro de bienestar</li>
+    </ul>
+</section>
+
+<footer>
+    <p>&copy; 2024 Hotel Oasis. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
+
+{% endblock %}

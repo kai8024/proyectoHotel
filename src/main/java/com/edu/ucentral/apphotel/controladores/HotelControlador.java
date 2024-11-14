@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HotelControlador {
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/inicio")
     public String inicio() {
-        return "inicio";  // Redirecciona a inicio.html
+        return "inicio";  // Debe redireccionar a inicio.html en /templates
     }
 
     // Otros métodos y rutas de tu controlador Hotel
