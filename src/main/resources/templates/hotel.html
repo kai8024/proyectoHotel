@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Reservas</title>
+    <!-- Enlaza el CSS de Bootstrap para un mejor estilo -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #2a2a72;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        .hero-section {
+            background: url('https://source.unsplash.com/1600x900/?hotel,room') no-repeat center/cover;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .form-reserva {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-reserva h2 {
+            text-align: center;
+            color: #2a2a72;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-reserva label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .form-reserva input,
+        .form-reserva select {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-reserva button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #2a2a72;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-reserva button:hover {
+            background-color: #ffd700;
+        }
+
+        .info-hotel {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #f1f1f1;
+        }
+
+        .info-hotel h2 {
+            font-size: 2rem;
+            color: #2a2a72;
+            margin-bottom: 1rem;
+        }
+
+        .info-hotel p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .info-hotel ul {
+            list-style: none;
+            padding: 0;
+            font-size: 1rem;
+            color: #2a2a72;
+            font-weight: bold;
+        }
+
+        .info-hotel ul li {
+            margin: 0.5rem 0;
+        }
+        .search-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .search-container h1 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .search-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .search-container button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #2a2a72;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        footer .social-icons {
+            margin-top: 1rem;
+        }
+
+        footer .social-icons a {
+            margin: 0 0.5rem;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #ffd700;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/inicio">Inicio</a></li>
+            <li><a href="/hotel">Hoteles</a></li>
+            <li><a href="/reserva/listar">reservas</a></li>
+            <li><a href="/reserva/registrar">registro</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="search-container">
+    <h1>Buscar Hotel</h1>
+    <form action="/buscar" method="post">
+        <div class="form-group">
+        <input type="text" name="hotel" placeholder="Escribe el nombre del hotel" required>
+        <button type="submit">Buscar</button>
+        </div>
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2024. Todos los derechos reservados.</p>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+</body>
+</html>
+

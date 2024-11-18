@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de Reservas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .calendar-container {
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .calendar-header button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calendar-header button:hover {
+            background-color: #0056b3;
+        }
+        .calendar-header h2 {
+            margin: 0;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        .day {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .reserved {
+            background-color: #ffcccb; /* Rojo claro */
+            color: #000;
+            border-radius: 5px;
+        }
+
+        .day-number {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="calendar-container">
+    <div class="calendar-header">
+        <button id="prev-month">Anterior</button>
+        <h2 id="month-year"></h2>
+        <button id="next-month">Siguiente</button>
+    </div>
+    <div id="calendar" class="calendar"></div>
+</div>
+
+<script>
+    // Variables globales para el mes y año actual
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth();
+
+    // Fechas reservadas simuladas desde el backend
+    const reservedDates = [text="${reserva.entrada}",text="${reserva.salida}"];
+    /*<div th:each="reserva : ${listaReservas}">
+        <p><span th:text="${reserva.entrada}"></span></p>
+    </div>*/
+
+    console.log("Fechas reservadas:", reservedDates); // Debug
+
+    // Función para generar un calendario
+    function generateCalendar(year, month, reservedDates) {
+        const calendar = document.getElementById("calendar");
+        calendar.innerHTML = ""; // Limpiar el calendario
+
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const startDay = new Date(year, month, 1).getDay();
+
+        // Actualizar encabezado de mes y año
+        const monthYearLabel = document.getElementById("month-year");
+        const monthNames = [
+            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        ];
+        monthYearLabel.textContent = `${monthNames[month]} ${year}`;
+
+        // Crear celdas vacías al inicio (días antes del primer día del mes)
+        for (let i = 0; i < startDay; i++) {
+            const emptyCell = document.createElement("div");
+            emptyCell.classList.add("day");
+            calendar.appendChild(emptyCell);
+        }
+
+        // Crear días del mes
+        for (let day = 1; day <= daysInMonth; day++) {
+            const cell = document.createElement("div");
+            cell.classList.add("day");
+
+            // Formatear la fecha como "YYYY-MM-DD"
+            const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+            // Verificar si la fecha está reservada
+            if (reservedDates.includes(dateStr)) {
+                cell.classList.add("reserved");
+            }
+
+            // Número del día
+            const dayNumber = document.createElement("span");
+            dayNumber.textContent = day;
+            dayNumber.classList.add("day-number");
+            cell.appendChild(dayNumber);
+
+            calendar.appendChild(cell);
+        }
+    }
+
+
+
+    // Eventos para navegar entre meses
+    document.getElementById("prev-month").addEventListener("click", () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        generateCalendar(currentYear, currentMonth, reservedDates);
+    });
+
+    document.getElementById("next-month").addEventListener("click", () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        generateCalendar(currentYear, currentMonth, reservedDates);
+    });
+
+    // Generar el calendario inicial para el mes actual
+    generateCalendar(currentYear, currentMonth, reservedDates);
+</script>
+</body>
+</html>
