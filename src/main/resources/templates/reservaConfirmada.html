@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva Confirmada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #28a745;
+        }
+        p {
+            font-size: 16px;
+            text-align: center;
+            color: #333;
+        }
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .details-table th,
+        .details-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .details-table th {
+            background-color: #28a745;
+            color: white;
+        }
+        .details-table td {
+            background-color: #f9f9f9;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>¡Reserva Confirmada!</h2>
+    <p>Tu pago ha sido procesado exitosamente. A continuación, los detalles de tu pago:</p>
+
+    <table class="details-table">
+        <tr th:each="pago : ${listaPagos}">
+            <th>Nombre del Titular</th>
+            <td th:text="${pago.nombre}"></td>
+            <th>Monto Pagado</th>
+            <td th:text="${pago.monto}"></td>
+    </table>
+
+    <a href="/inicio" class="btn">Regresar al inicio</a>
+</div>
+
+</body>
+</html>

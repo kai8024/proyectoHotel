@@ -174,16 +174,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="/inicio">Inicio</a></li>
-            <li><a href="/hotel">Hoteles</a></li>
-            <li><a href="/reserva/listar">Disponibilidad</a></li>
-            <li><a href="/reserva/registrar">registro</a></li>
-        </ul>
-    </nav>
-</header>
 <a href="/hotel" class="btn">Volver</a>
 <div class="container">
     <h1 class="mb-4">Lista de Reservas</h1>
@@ -200,7 +190,6 @@
             <th>Salida</th>
             <th>Adultos</th>
             <th>menores</th>
-            <th>reserva</th>
         </tr>
         </thead>
         <tbody>
@@ -210,12 +199,14 @@
             <td th:text="${reserva.identificacion}"></td>
             <td th:text="${reserva.correo}"></td>
             <td th:text="${reserva.telefono}"></td>
-            <td th:text="${reserva.habitacion}"></td>
+            <td th:text="${reserva.habitacion == 50000 ? 'individual'
+                 : (reserva.habitacion == 85000 ? 'doble'
+                 : (reserva.habitacion == 100000 ? 'suite' : 'otro tipo'))}">
+            </td>
             <td th:text="${reserva.entrada}"></td>
             <td th:text="${reserva.salida}"></td>
             <td th:text="${reserva.adultos}"></td>
             <td th:text="${reserva.menores}"></td>
-            <td th:text="${reserva.entrada}"></td>
         </tr>
         </tbody>
     </table>

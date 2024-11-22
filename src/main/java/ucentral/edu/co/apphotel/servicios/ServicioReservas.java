@@ -51,6 +51,9 @@ public class ServicioReservas implements OperacionesReserva {
             LocalDate.of(2024, 11, 20)
     );
 
+    public List<Reserva> obtenerTodasReservas() {
+        return repoReserva.findAll();
+    }
     // Obtener las fechas reservadas
     public List<LocalDate> obtenerFechasReservadas() {
         return fechasReservadas;

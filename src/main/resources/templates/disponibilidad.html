@@ -246,8 +246,9 @@
         <ul>
             <li><a href="/inicio">Inicio</a></li>
             <li><a href="/hotel">Hoteles</a></li>
-            <li><a href="/reserva/listar">Disponibilidad</a></li>
-            <li><a href="/reserva/registrar">Mis reservas</a></li>
+            <li><a href="/disponibilidad">Disponibilidad</a></li>
+            <li><a href="/pago">pago</a></li>
+            <li><a href="/sitios">sitios</a></li>
         </ul>
     </nav>
 </header>
@@ -255,21 +256,23 @@
 <h1>Buscar Habitaciones</h1>
 <div class="container">
     <form action="/buscar/disponibilidad" method="post" class="form-vertical">
-        <label>Fecha de Entrada:</label>
-        <input type="date" name="fechaEntrada" required>
 
-        <label>Fecha de Salida:</label>
-        <input type="date" name="fechaSalida" required>
-
-        <label>Nombre del hotel:</label>
-        <input type="text" name="hotel" placeholder="Escribe el nombre del hotel" required>
-
+        <div class="form-group">
+            <label for="hotel">Selecciona un hotel:</label>
+            <select name="hotel" id="hotel" required>
+                <option value="" disabled selected>Selecciona un hotel</option>
+                <th:block th:each="hotel : ${hoteles}">
+                    <option th:value="${hotel}" th:text="${hotel}"></option>
+                </th:block>
+            </select>
+        </div>
         <label>Habitacion:</label>
         <select name="habitacion" required>
-            <option value="individual">Individual</option>
-            <option value="doble">Doble</option>
-            <option value="suite">Suite</option>
+            <option value="50000">Individual</option>
+            <option value="85000">Doble</option>
+            <option value="100000">Suite</option>
         </select>
+
 
 
         <button type="submit" class="button">Buscar</button>

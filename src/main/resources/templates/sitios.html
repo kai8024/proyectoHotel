@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puntos de Interés Turístico</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #2a2a72;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        .city-section {
+            padding: 2rem 1rem;
+            background-color: #f1f1f1;
+            margin-bottom: 1rem;
+        }
+
+        .city-section h2 {
+            color: #2a2a72;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tourist-points {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .point-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .point-card:hover {
+            transform: scale(1.05);
+        }
+
+        .point-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .point-card h3 {
+            margin: 1rem 0 0.5rem;
+            font-size: 1.5rem;
+            color: #2a2a72;
+        }
+
+        .point-card p {
+            color: #555;
+        }
+
+        footer {
+            background-color: #2a2a72;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/inicio">Inicio</a></li>
+            <li><a href="/hotel">Hoteles</a></li>
+            <li><a href="/disponibilidad">Disponibilidad</a></li>
+            <li><a href="/pago">pago</a></li>
+            <li><a href="/sitios">sitios</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="city-section">
+    <h2>Bogotá</h2>
+    <div class="tourist-points">
+        <div class="point-card">
+            <img src="/img/monserrate.jpg" alt="Monserrate">
+            <h3>Monserrate</h3>
+            <p>Una vista panorámica de la ciudad desde el cerro más famoso de Bogotá.</p>
+        </div>
+        <div class="point-card">
+            <img src="/img/museo.jpg" alt="Museo del Oro">
+            <h3>Museo del Oro</h3>
+            <p>Explora la colección más grande de oro prehispánico del mundo.</p>
+        </div>
+        <div class="point-card">
+            <img src="/img/jardin.jpg" alt="Jardín Botánico">
+            <h3>Jardín Botánico</h3>
+            <p>Un oasis de biodiversidad en medio de la ciudad.</p>
+        </div>
+    </div>
+</section>
+
+<section class="city-section">
+    <h2>Santa Marta</h2>
+    <div class="tourist-points">
+        <div class="point-card">
+            <img src="/img/tayrona.jpg" alt="Parque Tayrona">
+            <h3>Parque Tayrona</h3>
+            <p>Un paraíso natural lleno de playas y senderos mágicos.</p>
+        </div>
+        <div class="point-card">
+            <img src="/img/quinta.jpg" alt="Quinta de San Pedro Alejandrino">
+            <h3>Quinta de San Pedro Alejandrino</h3>
+            <p>La última morada de Simón Bolívar.</p>
+        </div>
+        <div class="point-card">
+            <img src="/img/rodadero.jpg" alt="El Rodadero">
+            <h3>El Rodadero</h3>
+            <p>Una de las playas más emblemáticas de Santa Marta.</p>
+        </div>
+    </div>
+</section>
+
+<section class="city-section">
+    <h2>Medellín</h2>
+    <div class="tourist-points">
+        <div class="point-card">
+            <img src="/img/comuna.jpg" alt="Comuna 13">
+            <h3>Comuna 13</h3>
+            <p>Arte callejero y una transformación inspiradora.</p>
+        </div>
+        <div class="point-card">
+            <img src="/img/metro.jpg" alt="Metrocable">
+            <h3>Metrocable</h3>
+            <p>Disfruta de vistas únicas mientras viajas por el cielo de Medellín.</p>
+        </div>
+        <div class="point-card">
+            <img src="/img/botero.jpg" alt="Plaza Botero">
+            <h3>Plaza Botero</h3>
+            <p>Un espacio dedicado a las esculturas del maestro Fernando Botero.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

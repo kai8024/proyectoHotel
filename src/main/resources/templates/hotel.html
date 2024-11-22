@@ -217,20 +217,39 @@
         <ul>
             <li><a href="/inicio">Inicio</a></li>
             <li><a href="/hotel">Hoteles</a></li>
-            <li><a href="/reserva/listar">reservas</a></li>
-            <li><a href="/reserva/registrar">registro</a></li>
+            <li><a href="/disponibilidad">Disponibilidad</a></li>
+            <li><a href="/pago">pago</a></li>
+            <li><a href="/sitios">sitios</a></li>
         </ul>
     </nav>
 </header>
 <div class="search-container">
     <h1>Buscar Hotel</h1>
-    <form action="/buscar" method="post">
+    <form action="/buscar/hotel" method="post" class="form-container">
         <div class="form-group">
-        <input type="text" name="hotel" placeholder="Escribe el nombre del hotel" required>
-        <button type="submit">Buscar</button>
+            <label for="hotel">Selecciona un hotel:</label>
+            <select name="hotel" id="hotel" required>
+                <option value="" disabled selected>Selecciona un hotel</option>
+                <th:block th:each="hotel : ${hoteles}">
+                <option th:value="${hotel}" th:text="${hotel}"></option>
+                </th:block>
+            </select>
+        </div>
+        <button type="submit" class="btn-buscar">Buscar</button>
+    </form>
+</div>
+
+
+
+<div class="search-container">
+    <h1>Ver todas las reservas</h1>
+    <form action="/reserva/listar" method="get">
+        <div class="form-group">
+            <button type="submit">Buscar</button>
         </div>
     </form>
 </div>
+
 
 <footer>
     <p>&copy; 2024. Todos los derechos reservados.</p>
