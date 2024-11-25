@@ -5,239 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buscar Disponibilidad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        header {
-            background-color: #2a2a72;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-        }
-
-        nav ul li {
-            margin: 0 1rem;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #ffd700;
-        }
-
-        .hero-section {
-            background: url('https://source.unsplash.com/1600x900/?hotel,room') no-repeat center/cover;
-            color: white;
-            text-align: center;
-            padding: 4rem 1rem;
-        }
-
-        .hero-section h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-section p {
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-        }
-        .form-vertical {
-            display: flex;
-            flex-direction: column; /* Alinea los elementos verticalmente */
-            gap: 1rem; /* Espacio entre los elementos */
-            max-width: 400px; /* Ajusta el ancho del formulario */
-            margin: 2rem auto; /* Centra el formulario horizontalmente */
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column; /* Alinea la etiqueta y el campo verticalmente */
-        }
-
-        .form-group label {
-            margin-bottom: 0.5rem; /* Espacio entre la etiqueta y el campo */
-            font-weight: bold;
-            color: #555;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group button {
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .form-group button {
-            background-color: #2a2a72;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .form-group button:hover {
-            background-color: #ffd700;
-        }
-
-
-        .form-reserva {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 2rem auto;
-        }
-
-        .form-reserva h2 {
-            text-align: center;
-            color: #2a2a72;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-reserva label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #555;
-        }
-
-        .form-reserva input,
-        .form-reserva select {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .form-reserva button {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #2a2a72;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .form-reserva button:hover {
-            background-color: #ffd700;
-        }
-        .room-gallery {
-            display: flex; /* Activa flexbox */
-            justify-content: center; /* Centra horizontalmente los elementos */
-            gap: 20px; /* Espacio entre imágenes */
-            margin-top: 20px;
-        }
-
-        .room-link {
-            text-align: center; /* Centra el texto bajo cada imagen */
-            text-decoration: none; /* Elimina el subrayado de los enlaces */
-            color: #333;
-        }
-
-        .room-link img {
-            width: 200px; /* Ajusta el ancho de las imágenes */
-            height: auto; /* Mantiene la proporción de las imágenes */
-            border-radius: 10px; /* Bordes redondeados opcionales */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra opcional */
-        }
-
-        .room-link h3 {
-            margin-top: 10px; /* Espacio entre la imagen y el texto */
-            font-size: 1.2rem;
-        }
-
-        .room-link:hover img {
-            transform: scale(1.05); /* Efecto de agrandar al pasar el ratón */
-            transition: transform 0.3s ease-in-out;
-        }
-        .info-hotel {
-            text-align: center;
-            padding: 3rem 1rem;
-            background-color: #f1f1f1;
-        }
-
-        .info-hotel h2 {
-            font-size: 2rem;
-            color: #2a2a72;
-            margin-bottom: 1rem;
-        }
-
-        .info-hotel p {
-            font-size: 1.1rem;
-            color: #555;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .info-hotel ul {
-            list-style: none;
-            padding: 0;
-            font-size: 1rem;
-            color: #2a2a72;
-            font-weight: bold;
-        }
-
-        .info-hotel ul li {
-            margin: 0.5rem 0;
-        }
-
-        footer {
-            background-color: #2a2a72;
-            color: white;
-            text-align: center;
-            padding: 1.5rem 0;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 0.9rem;
-        }
-
-        footer .social-icons {
-            margin-top: 1rem;
-        }
-
-        footer .social-icons a {
-            margin: 0 0.5rem;
-            color: white;
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer .social-icons a:hover {
-            color: #ffd700;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -246,8 +14,9 @@
         <ul>
             <li><a href="/inicio">Inicio</a></li>
             <li><a href="/hotel">Hoteles</a></li>
-            <li><a href="/reserva/listar">Disponibilidad</a></li>
-            <li><a href="/reserva/registrar">Mis reservas</a></li>
+            <li><a href="/disponibilidad">Disponibilidad</a></li>
+            <li><a href="/pago">pago</a></li>
+            <li><a href="/sitios">sitios</a></li>
         </ul>
     </nav>
 </header>
@@ -255,27 +24,30 @@
 <h1>Buscar Habitaciones</h1>
 <div class="container">
     <form action="/buscar/disponibilidad" method="post" class="form-vertical">
-        <label>Fecha de Entrada:</label>
-        <input type="date" name="fechaEntrada" required>
-
-        <label>Fecha de Salida:</label>
-        <input type="date" name="fechaSalida" required>
-
-        <label>Nombre del hotel:</label>
-        <input type="text" name="hotel" placeholder="Escribe el nombre del hotel" required>
-
+        <div class="form-group">
+            <label>Hotel:</label>
+            <select name="hotel" required>
+                <option value="" disabled selected>Selecciona un hotel</option>
+                <option value="Bogota">Bogota</option>
+                <option value="Medellin">Medellin</option>
+                <option value="Santa Marta">Santa Marta</option>
+            </select>
+        </div>
         <label>Habitacion:</label>
         <select name="habitacion" required>
-            <option value="individual">Individual</option>
-            <option value="doble">Doble</option>
-            <option value="suite">Suite</option>
+            <option value="" disabled selected>Selecciona una habitacion</option>
+            <option value="50000">Individual</option>
+            <option value="85000">Doble</option>
+            <option value="100000">Suite</option>
         </select>
-
 
         <button type="submit" class="button">Buscar</button>
     </form>
 </div>
 
+<div th:if="${mensaje}" class="alert alert-danger" role="alert">
+    <p th:text="${mensaje}"></p>
+</div>
 <footer>
     <p>&copy; 2024. Todos los derechos reservados.</p>
     <div class="social-icons">

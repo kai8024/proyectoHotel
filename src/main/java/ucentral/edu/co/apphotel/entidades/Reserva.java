@@ -33,10 +33,10 @@ public class Reserva {
     private String correo;
 
     @Column(name = "RES_TELEFONO", nullable = false)
-    private int telefono;
+    private Long telefono;
 
     @Column(name = "RES_HABITACION", nullable = false)
-    private String habitacion;
+    private Long habitacion;
 
     @Column(name = "RES_ENTRADA", nullable = false)
     private LocalDate entrada;

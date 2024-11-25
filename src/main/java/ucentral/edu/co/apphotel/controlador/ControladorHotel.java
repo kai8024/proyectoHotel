@@ -24,29 +24,36 @@ public class ControladorHotel {
         this.servicioReservas = servicioReservas;
     }
 
+
     @GetMapping("/hotel")
-    public String cargarHotelModal(Model model){
+    public String mostrarFormularioBusqueda(Model model) {
+        List<ReservaDto> listaReservas = servicioReservas.consultarT();
+        List<String> hoteles = listaReservas.stream()
+                .map(ReservaDto::getHotel)
+                .distinct()
+                .collect(Collectors.toList());
+        model.addAttribute("hoteles", hoteles);
         return "hotel";
     }
 
-   @PostMapping("/buscar")
-   public String buscarHotel(@RequestParam String hotel, Model model) {
-       // Obtener la lista completa de reservas
-       List<ReservaDto> listaReservas = servicioReservas.consultarT();
+    @PostMapping("/buscar/hotel")
+    public String buscarHotel(@RequestParam String hotel, Model model) {
+        List<ReservaDto> listaReservas = servicioReservas.consultarT();
+        List<ReservaDto> reservasFiltradas = listaReservas.stream()
+                .filter(reserva -> reserva.getHotel().equalsIgnoreCase(hotel))
+                .collect(Collectors.toList());
 
-       // Filtrar las reservas que coincidan con el hotel buscado
-       List<ReservaDto> reservasFiltradas = listaReservas.stream()
-               .filter(reserva -> reserva.getHotel().equalsIgnoreCase(hotel))
-               .collect(Collectors.toList());
+        if (reservasFiltradas.isEmpty()) {
+            model.addAttribute("mensaje", "No se encontraron reservas para el hotel: " + hotel);
+            return "hotel";
+        }
 
-       // Verificar si hay resultados
-       if (reservasFiltradas.isEmpty()) {
-           model.addAttribute("mensaje", "No se encontraron reservas para el hotel: " + hotel);
-           return "hotel"; // Página que muestra el mensaje de no resultados
-       }
+        model.addAttribute("listaReservas", reservasFiltradas);
+        return "listar";
+    }
 
-       // Agregar las reservas filtradas al modelo
-       model.addAttribute("listaReservas", reservasFiltradas);
-       return "listar"; // Página para mostrar las reservas filtradas
-   }
+    @GetMapping("/sitios")
+    public String sitios(Model model){
+        return "sitios";
+    }
 }

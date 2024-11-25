@@ -57,6 +57,7 @@
     </style>
 </head>
 <body>
+<a href="/disponibilidad" class="btn">Volver</a>
 <div class="calendar-container">
     <div class="calendar-header">
         <button id="prev-month">Anterior</button>
@@ -65,22 +66,23 @@
     </div>
     <div id="calendar" class="calendar"></div>
 </div>
+<div th:each="reserva : ${listaReservas}">
+    Reserva #[[${reserva.id}]] Entrada: [[${reserva.entrada}]] - Salida: [[${reserva.salida}]]
+</div>
 
-<script>
-    // Variables globales para el mes y año actual
+
+
+
+<script th:inline="javascript">
+
+    const reservedDates =  [{start: "2024-11-11",end:"2024-11-15"},{start: "2024-11-23",end:"2024-11-25"},{start: "2024-12-23",end:"2025-01-02"}];
+
+
     let currentYear = new Date().getFullYear();
     let currentMonth = new Date().getMonth();
 
-    // Fechas reservadas simuladas desde el backend
-    const reservedDates = [text="${reserva.entrada}",text="${reserva.salida}"];
-    /*<div th:each="reserva : ${listaReservas}">
-        <p><span th:text="${reserva.entrada}"></span></p>
-    </div>*/
-
-    console.log("Fechas reservadas:", reservedDates); // Debug
-
     // Función para generar un calendario
-    function generateCalendar(year, month, reservedDates) {
+    function generateCalendar(year, month, reservedRanges) {
         const calendar = document.getElementById("calendar");
         calendar.innerHTML = ""; // Limpiar el calendario
 
@@ -95,7 +97,7 @@
         ];
         monthYearLabel.textContent = `${monthNames[month]} ${year}`;
 
-        // Crear celdas vacías al inicio (días antes del primer día del mes)
+        // Crear celdas vacías al inicio
         for (let i = 0; i < startDay; i++) {
             const emptyCell = document.createElement("div");
             emptyCell.classList.add("day");
@@ -110,8 +112,15 @@
             // Formatear la fecha como "YYYY-MM-DD"
             const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
-            // Verificar si la fecha está reservada
-            if (reservedDates.includes(dateStr)) {
+            // Verificar si la fecha está en algún rango reservado
+            const isReserved = reservedRanges.some(range => {
+                const start = new Date(range.start);
+                const end = new Date(range.end);
+                const currentDate = new Date(dateStr);
+                return currentDate >= start && currentDate <= end;
+            });
+
+            if (isReserved) {
                 cell.classList.add("reserved");
             }
 
@@ -124,8 +133,6 @@
             calendar.appendChild(cell);
         }
     }
-
-
 
     // Eventos para navegar entre meses
     document.getElementById("prev-month").addEventListener("click", () => {
@@ -149,5 +156,6 @@
     // Generar el calendario inicial para el mes actual
     generateCalendar(currentYear, currentMonth, reservedDates);
 </script>
+
 </body>
 </html>

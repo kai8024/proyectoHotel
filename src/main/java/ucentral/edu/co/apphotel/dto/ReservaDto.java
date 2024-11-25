@@ -8,6 +8,7 @@ import ucentral.edu.co.apphotel.entidades.Habitacion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -22,13 +23,20 @@ public class ReservaDto implements Serializable {
     private String nombre;
     private int identificacion;
     private String correo;
-    private int telefono;
-    private String habitacion;
+    private Long telefono;
+    private Long habitacion;
     private LocalDate entrada;
     private LocalDate salida;
     private int adultos;
     private int menores;
     private LocalDate fechaReserva;
     private Long dias;
+    private Long monto;
 
+    public long calcularDiasEstadia() {
+        if (entrada != null && salida != null) {
+            return ChronoUnit.DAYS.between(entrada, salida);
+        }
+        return 0;
+    }
 }

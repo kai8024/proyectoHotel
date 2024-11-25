@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-
 </head>
 <body>
 <header>
@@ -22,28 +21,27 @@
         </ul>
     </nav>
 </header>
-<h1>Buscar Hotel</h1>
+<h1>Buscar reserva</h1>
 <div class="container">
-    <form action="/buscar/hotel" method="post" class="form-vertical">
-        <div class="form-group">
-            <label for="hotel">Selecciona un hotel:</label>
-            <select name="hotel" id="hotel" required>
-                <option value="" disabled selected>Selecciona un hotel</option>
-                <th:block th:each="hotel : ${hoteles}">
-                <option th:value="${hotel}" th:text="${hotel}"></option>
-                </th:block>
-            </select>
-        </div>
-        <button type="submit" class="btn-buscar">Buscar</button>
-    </form>
-    <h1>Ver todas las reservas</h1>
-    <form action="/reserva/listar" method="get" class="form-vertical">
-        <div class="form-group">
+    <form action="/buscar/pago" method="post" class="form-vertical">
+            <div class="form-group">
+                <label for="nombre">Selecciona un nombre:</label>
+                <select name="nombre" id="nombre" required>
+                    <option value="" disabled selected>Selecciona un nombre</option>
+                    <th:block th:each="nombre : ${nombres}">
+                        <option th:value="${nombre}" th:text="${nombre}"></option>
+                    </th:block>
+                </select>
+            </div>
             <button type="submit">Buscar</button>
-        </div>
     </form>
 </div>
 
+<form action="/pagando/reserva" method="get" class="form-vertical">
+    <div class="form-group">
+        <button type="submit">Ver Comprobantes</button>
+    </div>
+</form>
 
 <footer>
     <p>&copy; 2024. Todos los derechos reservados.</p>
@@ -55,4 +53,3 @@
 </footer>
 </body>
 </html>
-

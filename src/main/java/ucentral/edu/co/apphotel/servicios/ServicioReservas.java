@@ -51,6 +51,9 @@ public class ServicioReservas implements OperacionesReserva {
             LocalDate.of(2024, 11, 20)
     );
 
+    public List<Reserva> obtenerTodasReservas() {
+        return repoReserva.findAll();
+    }
     // Obtener las fechas reservadas
     public List<LocalDate> obtenerFechasReservadas() {
         return fechasReservadas;
@@ -67,5 +70,21 @@ public class ServicioReservas implements OperacionesReserva {
             RepoDiaReserva.save(diaReserva);
         });
     }*/
+
+    public boolean existeConflictoDeFechas(String hotel, Long habitacion, LocalDate entrada, LocalDate salida) {
+        List<ReservaDto> reservas = consultarT(); // Obtener todas las reservas
+
+        return reservas.stream()
+                .anyMatch(reserva ->
+                        reserva.getHotel().equalsIgnoreCase(hotel) &&
+                                reserva.getHabitacion().equals(habitacion) &&
+                                (entrada.isBefore(reserva.getSalida()) && salida.isAfter(reserva.getEntrada()))
+                );
+    }
+
+    public void eliminarReserva(Long id) {
+        repoReserva.deleteById(id);
+    }
+
 
 }

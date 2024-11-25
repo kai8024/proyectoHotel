@@ -173,25 +173,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="/inicio">Inicio</a></li>
-            <li><a href="/hotel">Hoteles</a></li>
-            <li><a href="/reserva/listar">reservas</a></li>
-            <li><a href="/reserva/registrar">registro</a></li>
-        </ul>
-    </nav>
-</header>
+
 
 <a href="/inicio" class="btn">Volver</a>
 <div class="container mt-5">
     <form action="/reserva/nuevo" method="post" th:object="${reservaLlenar}">
         <h2>Reserva en Línea</h2>
-
+        <div th:if="${error}" class="alert alert-danger">
+            <p th:text="${error}"></p>
+        </div>
         <div class="form-group">
-            <label for="hotel">Nombre del hotel:</label>
-            <input th:field="*{hotel}" type="text" id="hotel" name="hotel" required />
+        <label for="hotel">Nombre de la ciudad:</label>
+        <select th:field="*{hotel}" id="hotel" required>
+            <option value="Bogota">Bogota</option>
+            <option value="Medellin">Medellin</option>
+            <option value="Santa Marta">Santa Marta</option>
+        </select>
         </div>
 
         <div class="form-group">
@@ -215,13 +212,14 @@
         </div>
 
         <div class="form-group">
-        <label for="habitacion">Tipo de Habitación:</label>
-        <select th:field="*{habitacion}" id="habitacion" required>
-            <option value="individual">Individual</option>
-            <option value="doble">Doble</option>
-            <option value="suite">Suite</option>
-        </select>
+            <label for="habitacion">Tipo de Habitación:</label>
+            <select th:field="*{habitacion}" id="habitacion" required>
+                <option value="50000" th:selected="${habitacion == '50000'}">Individual</option>
+                <option value="85000" th:selected="${habitacion == '85000'}">Doble</option>
+                <option value="100000" th:selected="${habitacion == '100000'}">Suite</option>
+            </select>
         </div>
+
 
         <div class="form-group">
         <label for="entrada">Fecha de Entrada:</label>
@@ -245,7 +243,7 @@
         </select>
         </div>
 
-        <div class="form-group">
+        <div class="for m-group">
         <label for="menores">Menores:</label>
         <select th:field="*{menores}" id="menores" required>
             <option value="0">0</option>
@@ -265,15 +263,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-
-<footer>
-    <p>&copy; 2024. Todos los derechos reservados.</p>
-    <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-    </div>
-</footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
